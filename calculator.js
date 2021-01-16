@@ -78,17 +78,17 @@ function decimal() {
     }
 }
 
-// Handles clearing the display when the all clear button is clicked.
+// Resets the calculator to it's default values.
 function allClear() {
     calculator.displayValue = "0";
+    calculator.firstOperand = null;
+    calculator.waitingForOperandTwo = false;
+    calculator.operator = null;
     updateDisplay();
 }
 
-function calculate() {
-    if (target.classList.contains('plus')) {
-        const answer = operandOne + waitingForOperandTwo;
-        calculator.displayValue = answer;
-    }
+function calculate(n1, calculate.operator, n2) {
+    
 }
 
 
