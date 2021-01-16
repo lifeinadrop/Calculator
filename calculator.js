@@ -84,5 +84,12 @@ function allClear() {
     updateDisplay();
 }
 
+function calculate() {
+    if (target.classList.contains('plus')) {
+        const answer = operandOne + waitingForOperandTwo;
+        calculator.displayValue = answer;
+    }
+}
+
 
 
