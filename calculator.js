@@ -3,9 +3,10 @@ const display = document.querySelector('.calculator-screen');
 
 const calculator = {
     displayValue: '0', // Keep track of what should displayed on the screen.
-    operandOne: null, // Initialize the variable for the first operand.
-    waitingForOperandTwo: false, // Makes sure that 2 operands are input before performing a calculation.
-    operator: null, // +, -, /, or *
+    firstNumber: null, // Initialize the variable for the first number.
+    secondNumber: null, // Initialize the variable for the second number.
+    waitingForSecondNumber: false, // Set to false, will be set to true upon the first number and operator being input.
+    operator: null, // +, -, /, or * (for now)
 };
 
 // Handles updating the display.
@@ -87,8 +88,10 @@ function allClear() {
     updateDisplay();
 }
 
-function calculate(n1, calculate.operator, n2) {
-    
+function calculate(n1, operator, n2) {
+    operator = calculator.operator;
+    n1 = calculator.firstNumber;
+    n2 = operandTwo;
 }
 
 
