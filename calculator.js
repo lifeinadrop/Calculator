@@ -68,14 +68,14 @@ keys.addEventListener('click', (event) => {
     digit(target.value);
 });
 
-// Handles inputting digits.
+// Handles inputting digits. Write the digit pressed if the current number is 0 OR if there is already a number there.
 function digit(digit) {
     const displayValue = calculator.displayValue;
     calculator.displayValue = displayValue == '0' ? digit : displayValue + digit;
     updateDisplay();
 }
 
-// Handles inputting the decimal point.
+// Handles inputting a single decimal point per number (num1 & num2).
 function decimal() {
     const dot = ".";
     if(!calculator.displayValue.includes(dot)) {
@@ -93,10 +93,26 @@ function allClear() {
     updateDisplay();
 }
 
+// Handles when an operator button is clicked.
+function handleOperator() {
+    const firstNumber = calculator.firstNumber;
+    const displayValue = calculator.displayValue;
+    const operator = calculator.displayValue;
+
+    // displayValue is a string, it needs to be a floating-point number.
+    const firstValueAsFloat = parseFloat(displayValue);
+
+    if (firstNumber === null) {
+        calculator.firstNumber = firstValueAsFloat;
+    }
+}
+
+// Handles the calculations for each operator. 
+// May need to add something for '='?
 function calculate(n1, operator, n2) {
     switch (operator) {
         case 'add':
-            return n1 + n2;
+            return n1 + n2
         case 'subtract':
             return n1 - n2;
         case 'multiply':
@@ -105,6 +121,12 @@ function calculate(n1, operator, n2) {
             return n1 / n2;
     }
 }
+
+// Deconstructuring assignment example.
+const { target } = event;
+// is equivalent to
+const target = event.target;
+
 
 
 
