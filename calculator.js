@@ -31,11 +31,12 @@ keys.addEventListener('click', (event) => {
 
     // Checks for the various function buttons on the calculator interface.
     if (target.classList.contains('operator')) {
-        addDigits();
         return;
     }
 
-    if (target.classList.contains('minus')) {
+    // Clean up if-statements with a switch statement?
+
+    if (target.classList.contains('subtract')) {
         subtractDigits();
         return;
     }
@@ -58,6 +59,10 @@ keys.addEventListener('click', (event) => {
     if (target.classList.contains('all-clear')) {
         allClear(target.value);
         return;
+    }
+
+    if (target.classList.contains('equal-sign')) {
+
     }
     
     digit(target.value);
@@ -89,9 +94,16 @@ function allClear() {
 }
 
 function calculate(n1, operator, n2) {
-    operator = calculator.operator;
-    n1 = calculator.firstNumber;
-    n2 = operandTwo;
+    switch (operator) {
+        case 'add':
+            return n1 + n2;
+        case 'subtract':
+            return n1 - n2;
+        case 'multiply':
+            return n1 * n2;
+        case 'divide':
+            return n1 / n2;
+    }
 }
 
 
