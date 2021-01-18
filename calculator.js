@@ -4,7 +4,6 @@ const display = document.querySelector('.calculator-screen');
 const calculator = {
     displayValue: '0', // Keep track of what should displayed on the screen.
     firstNumber: null, // Initialize the variable for the first number.
-    secondNumber: null, // Initialize the variable for the second number.
     waitingForSecondNumber: false, // Set to false, will be set to true upon the first number and operator being input.
     operator: null, // +, -, /, or * (for now)
 };
@@ -66,6 +65,7 @@ keys.addEventListener('click', (event) => {
     }
     
     digit(target.value);
+    handleOperator(target.value);
 });
 
 // Handles inputting digits. Write the digit pressed if the current number is 0 OR if there is already a number there.
@@ -94,21 +94,24 @@ function allClear() {
 }
 
 // Handles when an operator button is clicked.
-function handleOperator() {
+function handleOperator(nextOperator) {
     const firstNumber = calculator.firstNumber;
     const displayValue = calculator.displayValue;
-    const operator = calculator.displayValue;
+    const operator = calculator.operator;
 
-    // displayValue is a string, it needs to be a floating-point number.
+    // displayValue is a string, it needs to be a number with a decimal point.
     const firstValueAsFloat = parseFloat(displayValue);
 
     if (firstNumber === null) {
         calculator.firstNumber = firstValueAsFloat;
     }
+    // Because an operator has been pushed, we are now waiting for the 2nd number so this property needs to be set to true.
+    calculator.waitingForSecondNumber = true;
+    calculator.operator = nextOperator;
 }
 
 // Handles the calculations for each operator. 
-// May need to add something for '='?
+// May need to add something for '='? Or make a separate function. Not sure yet.
 function calculate(n1, operator, n2) {
     switch (operator) {
         case 'add':
@@ -122,10 +125,10 @@ function calculate(n1, operator, n2) {
     }
 }
 
-// Deconstructuring assignment example.
-const { target } = event;
-// is equivalent to
-const target = event.target;
+// // Deconstructuring assignment example.
+// const { target } = event;
+// // is equivalent to
+// const target = event.target;
 
 
 
