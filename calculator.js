@@ -64,14 +64,23 @@ keys.addEventListener('click', (event) => {
 
     }
     
-    digit(target.value);
+    inputNumber(target.value);
     handleOperator(target.value);
 });
 
 // Handles inputting digits. Write the digit pressed if the current number is 0 OR if there is already a number there.
-function digit(digit) {
+function inputNumber(digit) {
     const displayValue = calculator.displayValue;
-    calculator.displayValue = displayValue == '0' ? digit : displayValue + digit;
+    const waitingForSecondNumber = calculator.waitingForSecondNumber;
+
+    if (waitingForSecondNumber === true) {
+        calculator.displayValue = digit;
+        calculator.waitingForSecondNumber = false;
+    }
+    else {
+        calculator.displayValue = displayValue == '0' ? digit : displayValue + digit;
+    }
+    
     updateDisplay();
 }
 
@@ -88,7 +97,7 @@ function decimal() {
 function allClear() {
     calculator.displayValue = "0";
     calculator.firstOperand = null;
-    calculator.waitingForOperandTwo = false;
+    calculator.waitingForSecondNumber = false;
     calculator.operator = null;
     updateDisplay();
 }
@@ -103,8 +112,11 @@ function handleOperator(nextOperator) {
     const firstValueAsFloat = parseFloat(displayValue);
 
     if (firstNumber === null) {
-        calculator.firstNumber = firstValueAsFloat;
+        if (!isNaN(firstValueAsFloat)) {
+            calculator.firstNumber = firstValueAsFloat;
+        }        
     }
+
     // Because an operator has been pushed, we are now waiting for the 2nd number so this property needs to be set to true.
     calculator.waitingForSecondNumber = true;
     calculator.operator = nextOperator;
