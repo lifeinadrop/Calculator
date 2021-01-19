@@ -13,59 +13,41 @@ function updateDisplay() {
     display.value = calculator.displayValue; // Set the value of the display.
 }
 
-// Call the method to update the display.
-updateDisplay();
-
 // Configure the keys of the calculator.
 const keys = document.querySelector('.calculator-keys');
 
 // Listen for a click event.
 keys.addEventListener('click', (event) => {
     const target = event.target;
+    const value = target.value;
 
     // possibly add a check to exit the function.
     if (!target.matches('button')) {
         return;
     }
 
-    // Checks for the various function buttons on the calculator interface.
-    if (target.classList.contains('operator')) {
-        return;
-    }
+    // Clean up if-statements with a switch statement? Done.
+    switch (value) {
+        case '-':
+        case '+':
+        case '*':
+        case '/':
+        case '=':
+            handleOperator(value);
+            break;
+        case '.':
+            decimal(value);
+            break;
+        case 'all-clear':
+            allClear();
+            break;
+        default:
+            if (Number.isInteger(parseFloat(value))) {
+                inputNumber(value);
+            }
+        }
 
-    // Clean up if-statements with a switch statement?
-
-    if (target.classList.contains('subtract')) {
-        subtractDigits();
-        return;
-    }
-
-    if (target.classList.contains('divide')) {
-        divideDigits();
-        return;
-    }
-    
-    if (target.classList.contains('multiply')) {
-        multiplyDigits();
-        return;
-    }
-
-    if (target.classList.contains('decimal')) {
-        decimal(target.value);
-        return;
-    }
-
-    if (target.classList.contains('all-clear')) {
-        allClear(target.value);
-        return;
-    }
-
-    if (target.classList.contains('equal-sign')) {
-
-    }
-    
-    inputNumber(target.value);
-    handleOperator(target.value);
+    updateDisplay();
 });
 
 // Handles inputting digits. Write the digit pressed if the current number is 0 OR if there is already a number there.
@@ -130,15 +112,10 @@ function handleOperator(nextOperator) {
 function calculate(n1, operator, n2) {
     // Alter these to use the value of the HTML element, not a class.
     switch (operator) {
-        case '+':
-            return n1 + n2
-        case '-':
-            return n1 - n2;
-        case '*':
-            return n1 * n2;
-        case '/':
-            return n1 / n2;
-        case '=':
-            return n2;
+        case '+': return n1 + n2
+        case '-': return n1 - n2;
+        case '*': return n1 * n2;
+        case '/': return n1 / n2;
+        case '=': return n2;
     }
 }
