@@ -116,6 +116,7 @@ function calculate(n1, operator, n2) {
         case '-': return n1 - n2;
         case '*': return n1 * n2;
         case '/': return n1 / n2;
-        case '=': return n2;
     }
+
+    return n2;
 }
