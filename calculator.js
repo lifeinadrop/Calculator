@@ -112,7 +112,12 @@ function handleOperator(nextOperator) {
     if (firstNumber === null) {
         if (!isNaN(firstValueAsFloat)) {
             calculator.firstNumber = firstValueAsFloat;
-        }        
+        }
+    }
+    else if (operator) {
+        const result = calculate(firstNumber, firstValueAsFloat, operator);
+        calculator.displayValue = String(result);
+        calculator.firstNumber = result;
     }
 
     // Because an operator has been pushed, we are now waiting for the 2nd number so this property needs to be set to true.
@@ -133,11 +138,7 @@ function calculate(n1, operator, n2) {
             return n1 * n2;
         case '/':
             return n1 / n2;
+        case '=':
+            return n2;
     }
 }
-
-
-
-
-
-
