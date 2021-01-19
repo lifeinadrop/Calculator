@@ -69,7 +69,6 @@ function decimal() {
     const dot = ".";
     if(!calculator.displayValue.includes(dot)) {
         calculator.displayValue += dot;
-        updateDisplay();
     }
 }
 
@@ -79,7 +78,6 @@ function allClear() {
     calculator.firstNumber = null;
     calculator.waitingForSecondNumber = false;
     calculator.operator = null;
-    updateDisplay();
 }
 
 // Handles when an operator button is clicked.
