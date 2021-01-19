@@ -97,7 +97,7 @@ function handleOperator(nextOperator) {
         }
     }
     else if (operator) {
-        const result = calculate(firstNumber, firstValueAsFloat, operator);
+        const result = calculate(firstNumber, operator, firstValueAsFloat);
         calculator.displayValue = String(result);
         calculator.firstNumber = result;
     }
