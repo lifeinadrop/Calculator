@@ -69,19 +69,17 @@ keys.addEventListener('click', (event) => {
 });
 
 // Handles inputting digits. Write the digit pressed if the current number is 0 OR if there is already a number there.
-function inputNumber(digit) {
+function inputNumber(number) {
     const displayValue = calculator.displayValue;
     const waitingForSecondNumber = calculator.waitingForSecondNumber;
 
     if (waitingForSecondNumber === true) {
-        calculator.displayValue = digit;
+        calculator.displayValue = number;
         calculator.waitingForSecondNumber = false;
     }
     else {
-        calculator.displayValue = displayValue == '0' ? digit : displayValue + digit;
+        calculator.displayValue = displayValue == '0' ? number : displayValue + number;
     }
-    
-    updateDisplay();
 }
 
 // Handles inputting a single decimal point per number (num1 & num2).
@@ -122,25 +120,23 @@ function handleOperator(nextOperator) {
     calculator.operator = nextOperator;
 }
 
-// Handles the calculations for each operator. 
-// May need to add something for '='? Or make a separate function. Not sure yet.
+// Handles the calculations for each operator.
+// Needs to return a value.
 function calculate(n1, operator, n2) {
+    // Alter these to use the value of the HTML element, not a class.
     switch (operator) {
-        case 'add':
+        case '+':
             return n1 + n2
-        case 'subtract':
+        case '-':
             return n1 - n2;
-        case 'multiply':
+        case '*':
             return n1 * n2;
-        case 'divide':
+        case '/':
             return n1 / n2;
     }
 }
 
-// // Deconstructuring assignment example.
-// const { target } = event;
-// // is equivalent to
-// const target = event.target;
+
 
 
 
