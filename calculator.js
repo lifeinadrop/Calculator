@@ -26,7 +26,7 @@ keys.addEventListener('click', (event) => {
         return;
     }
 
-    // Clean up if-statements with a switch statement? Done.
+    // Check which event value is used and handle appropriately. 
     switch (value) {
         case '-':
         case '+':
@@ -76,7 +76,7 @@ function decimal() {
 // Resets the calculator to it's default values.
 function allClear() {
     calculator.displayValue = "0";
-    calculator.firstOperand = null;
+    calculator.firstNumber = null;
     calculator.waitingForSecondNumber = false;
     calculator.operator = null;
     updateDisplay();
@@ -102,15 +102,13 @@ function handleOperator(nextOperator) {
         calculator.firstNumber = result;
     }
 
-    // Because an operator has been pushed, we are now waiting for the 2nd number so this property needs to be set to true.
+    // Because an operator has been pushed, it's now waiting for the 2nd number so this property needs to be set to true.
     calculator.waitingForSecondNumber = true;
     calculator.operator = nextOperator;
 }
 
 // Handles the calculations for each operator.
-// Needs to return a value.
 function calculate(n1, operator, n2) {
-    // Alter these to use the value of the HTML element, not a class.
     switch (operator) {
         case '+': return n1 + n2
         case '-': return n1 - n2;
