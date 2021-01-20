@@ -1,36 +1,49 @@
 html {
-    font-size: 62.5%;
-    box-sizing: border-box;
-  }
-  
-  *, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-  }
+    width: 100%;
+    height: 100%;
+}
 
-  .wrapper {
+body {
+    width: 99%;
+    height: 99%;
+}
+.wrapper {
     display: grid;
     grid-template-columns: repeat(12, [col-start] 1fr);
     gap: 20px;
-  }
-  
-  .calculator {
-    grid-column: col-start / span 6;
+    width: 80%;
+    height: 99%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.item2 {
+    grid-column: col-start 8 / span 4;
+    grid-row: 1 / 30;
+    background-color: #3C4C59;
+}
+
+.item2 h1 {
+    text-align: center;
+    color: #fff;
+}
+
+/* Calculator Styles */
+.calculator {
+    grid-column: col-start 2 / span 2;
+    grid-row: 1 / 30;
     border: 3px solid #ccc;
     background-color: #3C4C59;
     border-radius: 5px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     width: 400px;
-    height: 600px;
+    height: 100%;
   }
-  
+
   .calculator-screen {
-    width: 100%;
+    width: 92%;
     font-size: 5rem;
+    margin-right: auto;
+    margin-left: auto;
     height: 80px;
     background-color: #3C4C59;
     color: #fff;
@@ -40,12 +53,6 @@ html {
     resize: none;
   }
 
-  .calculator-history {
-    grid-column: col-start 6 / span 6;
-    width: 100%;
-    height: 50%;
-  }
-  
   button {
     height: 81px;
     background-color: #fff;
