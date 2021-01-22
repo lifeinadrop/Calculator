@@ -1,0 +1,27 @@
+{
+  "name": "calculator",
+  "version": "0.0.1",
+  "description": "Calculator built using js/nodejs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "jquery": "^3.5.1",
+    "nodeQuery": "0.0.9-1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lifeinadrop/Node-Calculator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lifeinadrop/Node-Calculator/issues"
+  },
+  "homepage": "https://github.com/lifeinadrop/Node-Calculator#readme"
+}
