@@ -1,4 +1,8 @@
-var functions = require('functions');
+// Setup the calculator display.
+const display = document.querySelector('.calculator-screen');
+
+// Configure the keys of the calculator.
+const keys = document.querySelector('.calculator-keys');
 
 // Listen for a click event.
 keys.addEventListener('click', (event) => {
